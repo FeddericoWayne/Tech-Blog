@@ -1,5 +1,7 @@
+// imports BlogPost model
 const { BlogPost } = require('../models');
 
+// blogpost seed data
 const blogPost = [
     {
         blog_title: "Test 1",
@@ -14,8 +16,10 @@ const blogPost = [
     }
 ];
 
+// function to seed blog posts
 const seedPosts = () =>{
     BlogPost.bulkCreate(blogPost);
 }
 
+// exports function
 module.exports = seedPosts;

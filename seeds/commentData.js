@@ -1,5 +1,7 @@
+// imports Comment model
 const { Comment } = require('../models');
 
+// comment seed data
 const comment = [
     {
         comment_text: "Comment 1",
@@ -14,8 +16,10 @@ const comment = [
     }
 ];
 
+// function to seed comment
 const seedComments = () =>{
     Comment.bulkCreate(comment);
 }
 
+// exports function
 module.exports = seedComments;

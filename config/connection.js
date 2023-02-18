@@ -1,3 +1,4 @@
+// Sequelize database connection process
 const Sequelize = require('sequelize');
 require('dotenv').config();
 
@@ -12,4 +13,5 @@ const sequelize = new Sequelize(
   }
 );
 
+// exports sequelize connection
 module.exports = sequelize;

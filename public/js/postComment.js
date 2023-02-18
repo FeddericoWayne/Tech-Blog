@@ -1,3 +1,4 @@
+// selects necessary elements
 const submitComment = document.getElementById('submit-comment');
 const editComments = document.getElementsByClassName('edit-comment');
 const deleteComments = document.getElementsByClassName('delete-comment');

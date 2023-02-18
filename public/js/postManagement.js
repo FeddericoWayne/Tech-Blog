@@ -1,10 +1,10 @@
+// selects necessary elements
 const editPost = document.getElementById('edit-post');
 const deletePost = document.getElementById('delete-post');
-
 const titleBox = document.getElementById('title-box');
 const textBox = document.getElementById('text-box');
 
-
+// handles blog edit requests
 function editBlogPage(e) {
 
     e.preventDefault();

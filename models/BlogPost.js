@@ -1,9 +1,11 @@
+// imports required packages
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 const User = require('./user');
 
 class BlogPost extends Model{};
 
+// instantiates BlogPost model
 BlogPost.init({
     id: {
         type: DataTypes.INTEGER,
@@ -35,4 +37,5 @@ BlogPost.init({
     freezeTableName: true
 });
 
+// exports BlogPost
 module.exports = BlogPost;
