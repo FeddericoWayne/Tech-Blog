@@ -21,7 +21,7 @@ async function handleSignUp(e) {
         });
 
         if (response.ok) {
-            document.location.replace('/api/blogpost');
+            document.location.replace('/');
         } else {
             window.alert("Failed to Sign Up. Please try again!")
         };
@@ -47,7 +47,7 @@ async function handleLogin(e) {
         });
 
         if (response.ok) {
-            document.location.replace('/api/blogpost');
+            document.location.replace('/');
 
         } else {
             window.alert("Failed to Login. Please try again!")

@@ -25,7 +25,7 @@ router.post('/signup', async (req,res)=>{
           const blogPosts = blogPostData.map((blogPost) =>
           blogPost.get({ plain: true }));
   
-          res.status(200).render('dashboard',{
+          res.status(200).render('homepage',{
               blogPosts,
               loggedIn: req.session.loggedIn,
               userId: req.session.user_id
@@ -82,7 +82,7 @@ router.post('/login',async (req,res)=>{
         include:[{model: User, attributes: ['username']}]  
       })
 
-      res.status(200).render('dashboard',{
+      res.status(200).render('homepage',{
           blogPostData,
           loggedIn: req.session.loggedIn,
           userId: req.session.user_id
