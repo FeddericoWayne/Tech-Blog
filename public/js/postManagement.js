@@ -35,9 +35,6 @@ function editBlogPage(e) {
 
     }
 
-
-
-
     editPost.addEventListener('click',updatePost);
 
 

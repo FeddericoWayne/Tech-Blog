@@ -2,7 +2,7 @@
     
     <textarea id="title-box" readonly="true">{{post.blog_title}}</textarea>
     <textarea id="text-box" readonly="true">{{post.blog_text}}</textarea>
-    <p>Posted by {{post.user.username}} on {{post.createdAt}}</p>
+    <p>Posted by {{post.user.username}} on {{formatTime post.createdAt}} {{formatDate post.createdAt}}</p>
     {{#if ownPost}}
     <section>
         <a class="navlink" id="edit-post">Edit Post</a>
@@ -21,7 +21,7 @@
     <p>Previous Comments:</p>
 
     {{#each comments as |comment|}}
-    <P>{{comment.user.username}} commented on {{comment.createdAt}}:</P>
+    <P>{{comment.user.username}} commented on {{formatTime comment.createdAt}} {{formatDate comment.createdAt}}:</P>
     <p>{{comment.comment_text}}</p>
     {{/each}}
 </section>

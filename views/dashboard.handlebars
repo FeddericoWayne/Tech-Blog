@@ -24,7 +24,7 @@
 <section class="blog-post">
 
 <h3 class="blog-title">{{blogPost.blog_title}}</h3>
-<h4 class="author">posted on: {{blogPost.createdAt}} by {{blogPost.user.username}}</h4>
+<h4 class="author">posted on: {{formatTime blogPost.createdAt}} {{formatDate blogPost.createdAt}} by {{blogPost.user.username}}</h4>
 <a class="read-more" href="/api/blogpost/{{blogPost.id}}">Go To Post</a>
 
 </section>
