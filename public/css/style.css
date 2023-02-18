@@ -52,6 +52,7 @@ nav {
     padding: 10px;
     border-radius: 15px;
     margin-inline: 20px;
+    margin-top: 25px;
 
 }
 
@@ -61,7 +62,7 @@ nav {
     margin-top: 60px;
 }
 
-#new-post, #post-button {
+#new-post, #post-button, #edit-post, #delete-post {
     font-family: 'Press Start 2P', cursive;
     cursor: pointer;
     text-decoration: none;
@@ -73,6 +74,33 @@ nav {
     border-radius: 15px;
     margin-bottom: 30px;
     margin-top: 20px;
+}
+
+ #submit-comment {
+    font-family: 'Press Start 2P', cursive;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    color:white;
+    background-color: var(--mustard);
+    border: 5px solid var(--teal);
+    padding: 10px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.edit-comment, .delete-comment {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    color:white;
+    background-color: var(--blue);
+    border: 5px solid var(--teal);
+    padding: 10px;
+    border-radius: 15px;
 }
 
 #author-info {
@@ -133,6 +161,38 @@ nav {
     margin-inline: auto;
 }
 
+#previous-comments {
+    margin-top: 35px;
+    text-align: center;
+}
+
+.comment-box {
+    border: 5px solid var(--mustard);
+    padding-inline: 15px;
+    padding-block: 15px;
+    border-radius: 15px;
+    width: 70vw;
+    margin-block: 10px;
+    margin-inline: auto;
+}
+
+.commenter-info {
+    font-size: 0.8rem;
+}
+
+.comment-text {
+    text-align: center;
+    font-size: 1.2rem;
+    width: 60vw;
+    background: white;
+    border:none;
+    border-radius: 10px;
+    margin-inline: auto;
+    margin-top: 0;
+    margin-bottom: 15px;
+    resize: none;
+}
+
 
 
 .read-more {
@@ -159,11 +219,10 @@ nav {
 .blog-title {
     font-family: 'Press Start 2P', cursive;
     background-color: var(--magenta);
-    border: 5px solid var(--pink);
     color:white;
     padding-block: 15px;
     padding-inline: 35px;
-    border-radius: 25px;
+    border-radius: 10px;
     margin-inline: auto;
     width: fit-content;
 }
@@ -176,6 +235,12 @@ nav {
     width: 70vw;
 }
 
+.login-container {
+    margin-top: 35px;
+}
+
 #login-signup-container {
     text-align: center;
 }
+
+

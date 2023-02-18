@@ -18,15 +18,25 @@
     <a class="navlink" id="submit-comment" data-id="{{post.id}}">Submit Comment</a>
 </section>
 
-<section>
-    <p>Previous Comments:</p>
+<section id="previous-comments">
+    <h3>Previous Comments:</h3>
 
     {{#each comments as |comment|}}
-    <P>{{comment.user.username}} commented on {{formatTime comment.createdAt}} {{formatDate comment.createdAt}}:</P>
-    <p>{{comment.comment_text}}</p>
+    <div class="comment-box">
+        <P class="commenter-info">{{comment.user.username}} commented on {{formatTime comment.createdAt}} {{formatDate comment.createdAt}}:</P>
+        <textarea id="comment-content" class="comment-text" readonly="true" data-id="{{comment.id}}">{{comment.comment_text}}</textarea>
+        {{#if isOwnComment}}
+        <div>
+            <a class="edit-comment" id="edit-comment-{{comment.id}}" data-id="{{comment.id}}">Edit Comment</a>
+            <a class="delete-comment" id="delete-comment-{{comment.id}}" data-id="{{comment.id}}">Delete Comment</a>
+        </div>
+        {{/if}}
+    </div>
     {{/each}}
 </section>
 
 <script src="/js/postComment.js"></script>
+{{#if ownPost}}
 <script src="/js/postManagement.js"></script>
+{{/if}}
 
