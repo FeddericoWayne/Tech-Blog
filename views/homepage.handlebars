@@ -1,0 +1,13 @@
+{{#each blogPosts as |blogPost|}}
+
+<section class="blog-post">
+<h3 class="blog-title">{{blogPost.blog_title}}</h3>
+<h4 class="author">posted on: {{blogPost.createdAt}} by {{blogPost.user.username}}</h4>
+{{#if loggedIn}}
+<a class="read-more" href="/api/blogpost/{{blogPost.id}}">Read Post</a>
+{{else}}
+<P>Login to Read Blog Post</P>
+{{/if}}
+</section>
+
+{{/each}}

@@ -1,0 +1,74 @@
+html {
+    scroll-behavior: smooth;
+}
+
+header {
+    text-align: center;
+    background-color: grey;
+    width: 90vw;
+    margin-left: 0;
+    padding-block: 35px;
+    margin:5px auto 15px;
+    border-radius: 35px;
+}
+
+nav {
+    text-align: center;
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+
+.navlink {
+    cursor: pointer;
+    text-decoration: none;
+    color:black;
+    background-color: grey;
+    padding: 10px;
+    border-radius: 15px;
+    margin-inline: 20px;
+}
+
+#new-post {
+    cursor: pointer;
+    text-decoration: none;
+    color:black;
+    background-color: grey;
+    padding: 10px;
+    border-radius: 15px;
+    margin-inline: 20px;
+}
+
+.blog-post, .new-post-container {
+    text-align: center;
+    background-color: grey;
+    padding-block: 25px;
+    margin-inline:auto;
+    margin-block: 15px;
+    border-radius: 35px;
+    width: 75vw;
+}
+
+#user-post-header {
+    text-align: center;
+}
+
+.blog-title {
+    background-color: white;
+    padding-block: 15px;
+    padding-inline: 35px;
+    border-radius: 25px;
+    margin-inline: auto;
+    width: fit-content;
+}
+
+.blog-text {
+    background-color: white;
+    padding-block: 25px;
+    border-radius: 25px;
+    margin-inline: auto;
+    width: 70vw;
+}
+
+textarea {
+    resize:none;
+}

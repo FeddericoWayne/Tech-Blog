@@ -1,0 +1,40 @@
+<a id="new-post">Create New Blog Post</a>
+
+<div id="post-container" style="display:none">
+        <h2 class="title">New Post</h2>
+        <div>
+            <label for="post-title">Post Title:</label>
+            <input class="form-input" type="text" id="post-title" />
+        </div>
+        <div>
+            <label for="post-content">Post Content:</label>
+            <input class="form-input" type="text" id="post-content" />
+        </div>
+        <div>
+            <button id="post-button">Post!</button>
+        </div>
+
+</div>
+
+
+<h3 id="user-post-header">Your Previous Posts:</h3>
+
+{{#each blogPosts as |blogPost|}}
+
+<section class="blog-post">
+
+<h3 class="blog-title">{{blogPost.blog_title}}</h3>
+<h4 class="author">posted on: {{blogPost.createdAt}} by {{blogPost.user.username}}</h4>
+<a class="read-more" href="/api/blogpost/{{blogPost.id}}">Go To Post</a>
+
+</section>
+{{/each}}
+
+
+<script src="/js/newPost.js"></script>
+
+
+
+
+
+

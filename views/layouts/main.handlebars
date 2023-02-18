@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/css/style.css">
+    <title>Tech Blog</title>
+</head>
+<body>
+    <header>
+        <h1 id="title">FRED'S TECH BLOG</h1>
+    </header>
+    <nav>
+        {{#if loggedIn}}
+        <a id="home" class="navlink" href="/api/blogpost">Home</a>
+        <a id="dashboard" class="navlink" href="/api/user/dashboard">Dashboard</a>
+        <a id="logout" class="navlink">Logout</a>
+        {{else}}
+        <a id="home" class="navlink" href="/">Home</a>
+        <a id="dashboard" class="navlink" href="/api/user/login">Dashboard</a>
+        <a href="/api/user/login" class="navlink">Login</a>
+        {{/if}}
+    </nav>
+    <main>
+        <div>
+            {{{ body }}}
+        </div>
+    </main>
+    {{#if loggedIn}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
+    
+</body>
+</html>

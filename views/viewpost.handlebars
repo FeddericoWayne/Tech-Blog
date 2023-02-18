@@ -1,0 +1,31 @@
+<section>
+    
+    <textarea id="title-box" readonly="true">{{post.blog_title}}</textarea>
+    <textarea id="text-box" readonly="true">{{post.blog_text}}</textarea>
+    <p>Posted by {{post.user.username}} on {{post.createdAt}}</p>
+    {{#if ownPost}}
+    <section>
+        <a class="navlink" id="edit-post">Edit Post</a>
+        <a class="navlink" id="delete-post">Delete Post</a>
+    </section>
+    {{/if}}
+</section>
+
+<section>
+    <p>Leave a Comment:</p>
+    <input type="text" id="comment">
+    <a class="navlink" id="submit-comment" data-id="{{post.id}}">Submit Comment</a>
+</section>
+
+<section>
+    <p>Previous Comments:</p>
+
+    {{#each comments as |comment|}}
+    <P>{{comment.user.username}} commented on {{comment.createdAt}}:</P>
+    <p>{{comment.comment_text}}</p>
+    {{/each}}
+</section>
+
+<script src="/js/postComment.js"></script>
+<script src="/js/postManagement.js"></script>
+
