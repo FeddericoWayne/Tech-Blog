@@ -8,7 +8,7 @@ function displayPostBox() {
     
     const box = document.getElementById('post-container');
     box.setAttribute('style','display:block');
-    newPost.setAttribute('style','cursor:auto');
+    newPost.setAttribute('style','display:none');
 
 };
 
@@ -18,7 +18,7 @@ async function createPost(e) {
     e.preventDefault();
 
     const title = document.getElementById('post-title').value.trim();
-    const text = document.getElementById('post-content').value.trim();
+    const text = document.getElementById('post-content').value;
 
     if (title && text) {
 

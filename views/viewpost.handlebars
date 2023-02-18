@@ -1,8 +1,9 @@
-<section>
+<section id="post-container">
     
     <textarea id="title-box" readonly="true">{{post.blog_title}}</textarea>
     <textarea id="text-box" readonly="true">{{post.blog_text}}</textarea>
-    <p>Posted by {{post.user.username}} on {{formatTime post.createdAt}} {{formatDate post.createdAt}}</p>
+    <p id="author-info">Posted by {{post.user.username}} on {{formatTime post.createdAt}} {{formatDate post.createdAt}}</p>
+ 
     {{#if ownPost}}
     <section>
         <a class="navlink" id="edit-post">Edit Post</a>
@@ -11,7 +12,7 @@
     {{/if}}
 </section>
 
-<section>
+<section id="post-comment">
     <p>Leave a Comment:</p>
     <input type="text" id="comment">
     <a class="navlink" id="submit-comment" data-id="{{post.id}}">Submit Comment</a>
