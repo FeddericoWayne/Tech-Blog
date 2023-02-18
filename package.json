@@ -20,5 +20,13 @@
     "handlebars": "^4.7.7",
     "mysql2": "^3.1.2",
     "sequelize": "^6.28.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FeddericoWayne/Tech-Blog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FeddericoWayne/Tech-Blog/issues"
+  },
+  "homepage": "https://github.com/FeddericoWayne/Tech-Blog#readme"
 }
