@@ -216,6 +216,7 @@ nav {
     border-radius: 15px;
     border:none;
     margin-inline: auto;
+    padding: 15px;
     resize: none;
 }
 

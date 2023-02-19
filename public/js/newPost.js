@@ -43,6 +43,11 @@ async function createPost(e) {
             window.location.replace("/api/user/dashboard")
         }
 
+        // if cookie timed out
+        if (response.status == 408) {
+            window.location.replace("/api/user/login");
+        }
+
     }
 
 };

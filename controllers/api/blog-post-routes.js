@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { User , BlogPost, Comment } = require('../../models');
-const withAuth = require('../../utils/auth');
 
 // get all the blogposts
 router.get('/', async (req,res)=>{
@@ -93,22 +92,31 @@ router.get('/:id', async (req,res)=>{
 })
 
 // creates new blog posts using middleware to check user log-in status first
-router.post('/new', withAuth, async (req,res)=>{
+router.post('/new', async (req,res)=>{
 
-    try{
-        await BlogPost.create({
-            blog_title: req.body.title,
-            blog_text: req.body.text,
-            author_id: req.session.user_id
-        });
-    
-        res.status(200).render('dashboard',{
-            loggedIn: req.session.loggedIn,
-            userId: req.session.user_id
-        })
-    } catch(err) {
-        res.status(400).json(err);
+    // if user is logged in
+    if (req.session.loggedIn) {
+        try{
+            await BlogPost.create({
+                blog_title: req.body.title,
+                blog_text: req.body.text,
+                author_id: req.session.user_id
+            });
+        
+            res.status(200).render('dashboard',{
+                loggedIn: req.session.loggedIn,
+                userId: req.session.user_id
+            })
+        } catch(err) {
+            res.status(400).json(err);
+        }
+    };
+
+    // if cookie timed out
+    if (!req.session.loggedIn) {
+        res.status(408).render('login');
     }
+
 });
 
 
