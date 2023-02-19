@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const { User , BlogPost, Comment } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // get all the blogposts
-router.get('/',async (req,res)=>{
+router.get('/', async (req,res)=>{
 
     try {
 
@@ -24,71 +25,71 @@ router.get('/',async (req,res)=>{
 
 });
 
-// displays one single blog post 
-router.get('/:id',async (req,res)=>{
+// displays one single blog post with its comments
+router.get('/:id', async (req,res)=>{
 
-    try {
-        const postData = await BlogPost.findByPk(req.params.id,{
-            include:[{model:User}]
-        });
-    
-        const post = postData.get({plain:true});
-    
-        const postId = post.id;
-        const authorId = post.author_id;
-    
-        let isOwnPost;
-    
-        if (authorId === req.session.user_id) {
-            isOwnPost = true;
-        } else {
-            isOwnPost = false;
-        }
-    
-        const commentData = await Comment.findAll({
-            include: [{model:User}],
-            where: {
-                post_id: postId
+    if (req.session.loggedIn) {
+        try {
+            const postData = await BlogPost.findByPk(req.params.id,{
+                include:[{model:User}]
+            });
+        
+            const post = postData.get({plain:true});
+        
+            const postId = post.id;
+            const authorId = post.author_id;
+        
+            let isOwnPost;
+        
+            if (authorId === req.session.user_id) {
+                isOwnPost = true;
+            } else {
+                isOwnPost = false;
             }
-        });
-
-
+        
+            const commentData = await Comment.findAll({
+                include: [{model:User}],
+                where: {
+                    post_id: postId
+                }
+            });
     
-        const comments = commentData.map((comment)=>
-        comment.get({plain:true}));
-
-        for (comment of comments) {
-            if (comment.commenter_id === req.session.user_id) {
-                comment.isOwnComment = true;
-                continue;
+    
+        
+            const comments = commentData.map((comment)=>
+            comment.get({plain:true}));
+    
+            for (comment of comments) {
+                if (comment.commenter_id === req.session.user_id) {
+                    comment.isOwnComment = true;
+                    continue;
+                };
+    
+                if (comment.commenter_id !== req.session.user_id) {
+                    comment.isOwnComment = false;
+                    continue;
+                };
             };
-
-            if (comment.commenter_id !== req.session.user_id) {
-                comment.isOwnComment = false;
-                continue;
-            };
-        };
+        
+            req.session.save(async ()=>{
+                req.session.loggedIn = true;   
+                req.session.ownPost = isOwnPost;
+        
+                res.status(200).render('viewpost',{ post, comments, loggedIn: req.session.loggedIn, ownPost: req.session.ownPost})
+            })
     
-        req.session.save(async ()=>{
-            req.session.loggedIn = true;   
-            req.session.ownPost = isOwnPost;
-    
-            res.status(200).render('viewpost',{ post, comments, loggedIn: req.session.loggedIn, ownPost: req.session.ownPost})
-        })
+        } catch(err) {
+            res.status(400).json(err);
+        }
 
-    } catch(err) {
-        res.status(400).json(err);
+    } else {
+        res.status(200).render('login');
     }
-
-
-
-
-
 
 })
 
 // creates new blog posts
-router.post('/new',async (req,res)=>{
+router.post('/new', withAuth, async (req,res)=>{
 
     try{
         await BlogPost.create({
@@ -108,121 +109,147 @@ router.post('/new',async (req,res)=>{
 
 
 // updates a blog post
-router.put('/:id',async (req,res)=>{
+router.put('/:id', async (req,res)=>{
 
-    try {
+    if (req.session.loggedIn) {
+        try {
 
-        await BlogPost.update({blog_title: req.body.updatedTitle, blog_text: req.body.updatedText},{
-            where: { id: req.params.id }
-        });
-    
-        req.session.save(()=>{
-            req.session.loggedIn = true
-        });
-    
-        res.status(200).json({message: "Post Updated!"});
-
+            await BlogPost.update({blog_title: req.body.updatedTitle, blog_text: req.body.updatedText},{
+                where: { id: req.params.id }
+            });
         
-    } catch(err) {
-        res.status(400).json(err);
+            req.session.save(()=>{
+                req.session.loggedIn = true
+            });
+        
+            res.status(200).json({message: "Post Updated!"});
+
+            
+        } catch(err) {
+            res.status(400).json(err);
+        }
+
+    } else {
+        res.status(200).render('login');
     }
 
 })
 
 // deletes a blog post
-router.delete('/:id',async(req,res)=>{
+router.delete('/:id', async(req,res)=>{
 
-    try {
-        await BlogPost.destroy({
-            where:{
-                id: req.params.id
-            }
-        });
+    if (req.session.loggedIn) {
 
-        req.session.save(async ()=>{
-            req.session.loggedIn = true;
-            
-            res.status(200).json({message:"Post Deleted!"})
+        try {
+            await BlogPost.destroy({
+                where:{
+                    id: req.params.id
+                }
+            });
+    
+            req.session.save(async ()=>{
+                req.session.loggedIn = true;
+                
+                res.status(200).json({message:"Post Deleted!"})
+    
+            });
+    
+        } catch(err) {
+            res.status(400).json(err);
+        }
 
-        });
-
-    } catch(err) {
-        res.status(400).json(err);
+    } else {
+        res.status(200).render('login');
     }
 
 });
 
 // creates new blog comments
-router.post('/comment',async (req,res)=>{
+router.post('/comment', async (req,res)=>{
     
-    try {
+    if (req.session.loggedIn) {
+        try {
 
-        const userId = req.session.user_id;
-
-        await Comment.create({
-            comment_text: req.body.commentText,
-            post_id: req.body.postId,
-            commenter_id: userId
-        });
-
-        req.session.save(async ()=>{
-            req.session.loggedIn = true;
-            res.status(200).json({message:'Comment Submitted!'}); 
-        })
+            const userId = req.session.user_id;
     
+            await Comment.create({
+                comment_text: req.body.commentText,
+                post_id: req.body.postId,
+                commenter_id: userId
+            });
+    
+            req.session.save(async ()=>{
+                req.session.loggedIn = true;
+                res.status(200).json({message:'Comment Submitted!'}); 
+            })
+        
+    
+    
+        } catch(err) {
+            res.status(400).json(err);
+        }
 
-
-    } catch(err) {
-        res.status(400).json(err);
+    } else {
+        res.status(408).render('login');
     }
 
 });
 
 // updates comments
-router.put('/comment/:id',async (req,res)=>{
+router.put('/comment/:id', async (req,res)=>{
 
-    try {
+    if (req.session.loggedIn) {
+        try {
 
-        const updatedComment = req.body.updatedComment;
-
-        await Comment.update({comment_text: updatedComment},{
-            where: {
-                id: req.params.id
-            }
-        });
+            const updatedComment = req.body.updatedComment;
     
-        req.session.save(()=>{
-            req.session.loggedIn = true
-        });
-    
-        res.status(200).json({message: "Comment Updated!"});
-
+            await Comment.update({comment_text: updatedComment},{
+                where: {
+                    id: req.params.id
+                }
+            });
         
-    } catch(err) {
+            req.session.save(()=>{
+                req.session.loggedIn = true
+            });
+        
+            res.status(200).json({message: "Comment Updated!"});
+    
+            
+        } catch(err) {
+    
+            res.status(400).json(err);
+    
+        }
 
-        res.status(400).json(err);
-
+    } else {
+        res.status(408).render('login');
     }
 
 });
 
 // deletes a comment
-router.delete('/comment/:id',async (req,res)=>{
+router.delete('/comment/:id', async (req,res)=>{
 
-    try {
-        await Comment.destroy({
-            where:{
-                id: req.params.id
-            }
-        });
+    if (req.session.loggedIn) {
+        try {
+            await Comment.destroy({
+                where:{
+                    id: req.params.id
+                }
+            });
+        
+            req.session.save(()=>{
+                req.session.loggedIn = true
+                res.status(200).json({message: "Comment Deleted!"});
+            });
     
-        req.session.save(()=>{
-            req.session.loggedIn = true
-            res.status(200).json({message: "Comment Deleted!"});
-        });
+        } catch(err) {
+            res.status(400).json(err);
+        }
 
-    } catch(err) {
-        res.status(400).json(err);
+    } else {
+        res.status(408).render('login');
     }
 
 });

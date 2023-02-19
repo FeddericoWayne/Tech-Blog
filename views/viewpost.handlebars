@@ -20,7 +20,6 @@
 
 <section id="previous-comments">
     <h3>Previous Comments:</h3>
-
     {{#each comments as |comment|}}
     <div class="comment-box">
         <P class="commenter-info">{{comment.user.username}} commented on {{formatTime comment.createdAt}} {{formatDate comment.createdAt}}:</P>
@@ -36,6 +35,7 @@
 </section>
 
 <script src="/js/postComment.js"></script>
+
 {{#if ownPost}}
 <script src="/js/postManagement.js"></script>
 {{/if}}

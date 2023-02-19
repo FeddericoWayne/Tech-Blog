@@ -21,8 +21,14 @@ async function postComment(e) {
         });
 
         if (response.ok) {
-            location.reload();
+            window.location.reload();
+        };
+
+        if (response.status == 408) {
+            window.location.replace('/api/user/login');
         }
+
+
         
     }
 
@@ -50,6 +56,10 @@ async function updateComment(e) {
 
         if (response.ok) {
             window.location.reload();
+        };
+
+        if (response.status == 408) {
+            window.location.replace('/api/user/login');
         }
 
     }
@@ -72,6 +82,10 @@ async function removeComment(e) {
 
     if (response.ok) {
         window.location.reload();
+    };
+
+    if (response.status == 408) {
+        window.location.replace('/api/user/login')
     }
 
 }

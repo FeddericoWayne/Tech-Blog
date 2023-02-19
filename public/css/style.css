@@ -56,6 +56,10 @@ nav {
 
 }
 
+.hint {
+    margin-block: 0;
+}
+
 #new-post-container, #post-container {
     text-align: center;
     margin-inline: auto;
@@ -74,6 +78,11 @@ nav {
     border-radius: 15px;
     margin-bottom: 30px;
     margin-top: 20px;
+}
+
+.read-more {
+    color: var(--blue);
+    text-shadow: 2px 2px var(--soot);
 }
 
  #submit-comment {
@@ -204,7 +213,7 @@ nav {
 
 .blog-post, .new-post-container {
     text-align: center;
-    background-color: white;
+    background-color: var(--mustard);
     padding-block: 25px;
     margin-inline:auto;
     margin-block: 15px;
@@ -225,14 +234,6 @@ nav {
     border-radius: 10px;
     margin-inline: auto;
     width: fit-content;
-}
-
-.blog-text {
-    background-color: white;
-    padding-block: 25px;
-    border-radius: 25px;
-    margin-inline: auto;
-    width: 70vw;
 }
 
 .login-container {
