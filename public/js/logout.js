@@ -6,6 +6,7 @@ const logOut = async () => {
       headers: { 'Content-Type': 'application/json' },
     });
 
+  // takes user back to homepage either when logged out or cookie timed out
   if (response.ok) {
     window.location.replace('/');
   } 

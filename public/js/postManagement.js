@@ -23,20 +23,40 @@ function editBlogPage(e) {
         const updatedTitle = titleBox.value.trim();
         const updatedText = textBox.value.trim();
 
+        // if either title or content is left blank
+        if (!updatedTitle) {
+            window.alert("Post Title Cannot be Blank!");
+            window.location.reload();
+            return;
+        };
+
+        if (!updatedText) {
+            window.alert("Post Content Cannot be Blank!");
+            window.location.reload();
+            return;
+        };
+
+        // PUT request to the server
         const response = await fetch(`/api/blogpost/${updatedPostId}`,{
             method: 'PUT',
             body: JSON.stringify({updatedTitle,updatedText}),
             headers: { 'Content-Type':'application/json' }
         });
 
+        // takes user back to user dashboard
         if (response.ok) {
             window.location.replace("/api/user/dashboard")
+        };
+
+        // if cookie timed out
+        if (response.status == 408) {
+            window.location.replace("/api/user/login");
         }
 
     }
 
+    // event listener to update post
     editPost.addEventListener('click',updatePost);
-
 
 };
 
@@ -48,14 +68,21 @@ async function deleteBlog(e) {
     const pathArray = window.location.href.split("/");
     const deletedPostId = pathArray[pathArray.length -1];
 
+    // DELETE request to server
     const response = await fetch(`/api/blogpost/${deletedPostId}`,{
         method: 'DELETE',
         headers: { 'Content-Type':'application/json'}
     });
 
+    // takes user back to dashboard
     if (response.ok) {
         window.location.replace("/api/user/dashboard")
     };
+
+    // if cookie timed out
+    if (response.status == 408) {
+        window.location.replace("/api/user/login");
+    }
 
 }
 

@@ -12,6 +12,8 @@
     --pink: #F172A1;
     --magenta: #E64398;
     --mustard: #F3D250;
+    --eggtart: #ffefae;
+    
 
 }
 
@@ -53,7 +55,18 @@ nav {
     border-radius: 15px;
     margin-inline: 20px;
     margin-top: 25px;
+    transition-property: all;
+}
 
+.navlink:hover {
+    color:black;
+    background-color: var(--grey);
+    border: 5px solid var(--salmon);
+}
+
+.navlink:active {
+    color:var(--soot);
+    background-color: white;
 }
 
 .hint {
@@ -78,11 +91,39 @@ nav {
     border-radius: 15px;
     margin-bottom: 30px;
     margin-top: 20px;
+    transition-property: all;
 }
+
+#new-post:hover, #post-button:hover, #edit-post:hover, #delete-post:hover {
+    color:black;
+    background-color: white;
+    border: 5px solid var(--pink);
+}
+
+#new-post:active, #post-button:active, #edit-post:active, #delete-post:active {
+    color: var(--soot);
+}    
+
 
 .read-more {
     color: var(--blue);
-    text-shadow: 2px 2px var(--soot);
+    background-color: var(--grey);
+    border-radius: 10px;
+    padding: 10px 15px;
+    transition-property: all;
+    transition-duration: 0.3s;
+}
+
+.read-more:hover {
+   color: var(--fire);
+   text-shadow: 2px 2px var(--soot);
+   box-shadow: 2px 2px var(--soot);
+}
+
+.read-more:active {
+    transition: none;
+    text-shadow: none;
+    box-shadow: none;
 }
 
  #submit-comment {
@@ -97,6 +138,16 @@ nav {
     border-radius: 15px;
     margin-bottom: 30px;
     margin-top: 20px;
+    transition-property: all;
+}
+
+#submit-comment:hover {
+    color:black;
+    background-color: white;
+}
+
+#submit-comment:active {
+    color: var(--soot);
 }
 
 .edit-comment, .delete-comment {
@@ -110,6 +161,16 @@ nav {
     border: 5px solid var(--teal);
     padding: 10px;
     border-radius: 15px;
+    transition-property: all;
+}
+
+.edit-comment:hover, .delete-comment:hover {
+    color:black;
+    background-color: white;
+}
+
+.edit-comment:active, .delete-comment:active {
+    color:var(--soot);
 }
 
 #author-info {
@@ -183,6 +244,12 @@ nav {
     width: 70vw;
     margin-block: 10px;
     margin-inline: auto;
+    transition-property: all;
+    transition-duration: 0.3s;
+}
+
+.comment-box:hover {
+    background-color: var(--eggtart);
 }
 
 .commenter-info {
@@ -211,14 +278,21 @@ nav {
 
 }
 
-.blog-post, .new-post-container {
+.blog-post {
     text-align: center;
     background-color: var(--mustard);
+    border: 10px solid var(--eggtart);
     padding-block: 25px;
     margin-inline:auto;
     margin-block: 15px;
     border-radius: 35px;
     width: 75vw;
+    transition-property: all;
+    transition-duration: 0.5s;
+}
+
+.blog-post:hover {
+    background-color: white;
 }
 
 #user-post-header {

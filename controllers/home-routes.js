@@ -6,13 +6,16 @@ router.get('/', async (req, res) => {
 
   try {
 
+    // sequelize retrieves blog post data with autho info 
     const blogPostData = await BlogPost.findAll({
       include:[{model: User, attributes: ['username']}]  
     });
 
+    // retrieves plain data 
     const blogPosts = blogPostData.map((blogPost) =>
     blogPost.get({ plain: true }));
 
+    // handlebars renders homepage with all current blogposts
     res.render('homepage',{ blogPosts, loggedIn: req.session.loggedIn })
 
 
@@ -23,6 +26,5 @@ router.get('/', async (req, res) => {
 });
 
 
-
-
+// exports router settings
 module.exports = router;

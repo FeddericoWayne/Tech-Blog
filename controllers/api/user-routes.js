@@ -6,9 +6,10 @@ router.post('/signup', async (req,res)=>{
 
   try {
 
-      // checks if username or email is already registered
+      // checks if username is already registered
       const usernameMatch = await User.findOne({where: {username: req.body.username}});
 
+      // if username is already in use
       if (usernameMatch) {
         res.status(409).render('login');
         return;
@@ -52,6 +53,7 @@ router.post('/signup', async (req,res)=>{
 // login route
 router.get('/login', (req, res) => {
 
+  // if user is already logged in
   if (req.session.loggedIn) {
     res.redirect('/');
     return;
@@ -70,19 +72,22 @@ router.post('/login',async (req,res)=>{
       }
     });
 
+    // if user not found
     if (!userData) {
       res.status(404).json({ message: 'User Not Found. Please try again!'});
       return;
     };
 
+    // using bcrypt and custom Model method to check user password
     const correctPassword = await userData.checkPassword(req.body.password);
 
-
+    // if password is incorrect
     if (!correctPassword) {
       res.status(401).json({ message: 'Incorrect Password. Please try again!'});
       return;
     };
 
+    // saves user id and logged-in status
     req.session.save(async ()=>{
       req.session.user_id = userData.id;
       req.session.loggedIn = true;
@@ -92,6 +97,7 @@ router.post('/login',async (req,res)=>{
         include:[{model: User, attributes: ['username']}]  
       })
 
+      // takes user back to homepage as logged in user
       res.status(200).render('homepage',{
           blogPostData,
           loggedIn: req.session.loggedIn,
@@ -115,6 +121,7 @@ router.get('/dashboard', async (req,res)=>{
 
   try {
 
+    // if user is logged in
     if (req.session.loggedIn) {
       const blogPostData = await BlogPost.findAll({
         where: {author_id: req.session.user_id},
@@ -148,15 +155,17 @@ router.get('/dashboard', async (req,res)=>{
 // logout request
 router.post('/logout', async(req, res) => {
   
-    if (req.session.loggedIn) {
-      req.session.destroy(() => {
-        res.status(200).end();
-      });
-    } else {
-      res.status(408).render('homepage')
-    }
-  });
+  // logs user out if user is logged in; takes user back to homepage if user already logged out (due to cookie timed out)
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(200).end();
+    });
+  } else {
+    res.status(408).render('homepage')
+  }
+
+});
 
 
-
+// exports router
 module.exports = router;

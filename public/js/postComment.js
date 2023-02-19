@@ -12,6 +12,11 @@ async function postComment(e) {
     const commentText = document.getElementById('comment').value;
     const postId = document.getElementById('submit-comment').getAttribute("data-id");
 
+    if (!commentText) {
+        window.alert("Comment Cannot be Blank!");
+        return;
+    }
+
     if (commentText) {
 
         const response = await fetch('/api/blogpost/comment',{
@@ -24,6 +29,7 @@ async function postComment(e) {
             window.location.reload();
         };
 
+        // if cookie timed out
         if (response.status == 408) {
             window.location.replace('/api/user/login');
         }
@@ -46,6 +52,12 @@ async function updateComment(e) {
 
         const updatedComment = e.target.parentElement.parentElement.querySelector('textarea').value;
 
+        if (!updatedComment) {
+            window.alert("Comment Cannot be Blank!");
+            window.location.reload();
+            return;
+        };
+
         const updatedCommentId = e.target.getAttribute('data-id');
 
         const response = await fetch(`/api/blogpost/comment/${updatedCommentId}`,{
@@ -58,6 +70,7 @@ async function updateComment(e) {
             window.location.reload();
         };
 
+        // if cookie timed out
         if (response.status == 408) {
             window.location.replace('/api/user/login');
         }
@@ -84,6 +97,7 @@ async function removeComment(e) {
         window.location.reload();
     };
 
+    // if cookie timed out
     if (response.status == 408) {
         window.location.replace('/api/user/login')
     }

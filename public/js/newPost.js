@@ -20,6 +20,17 @@ async function createPost(e) {
     const title = document.getElementById('post-title').value.trim();
     const text = document.getElementById('post-content').value;
 
+    // if either title or text is left blank
+    if (!title) {
+        window.alert("Post Title Cannot be Blank!");
+        return;
+    };
+
+    if (!text) {
+        window.alert("Post Content Cannot be Blank!");
+        return;
+    };
+
     if (title && text) {
 
         const response = await fetch('/api/blogpost/new',{

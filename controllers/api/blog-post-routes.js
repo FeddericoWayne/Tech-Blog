@@ -28,6 +28,7 @@ router.get('/', async (req,res)=>{
 // displays one single blog post with its comments
 router.get('/:id', async (req,res)=>{
 
+    // if user is logged in
     if (req.session.loggedIn) {
         try {
             const postData = await BlogPost.findByPk(req.params.id,{
@@ -47,18 +48,19 @@ router.get('/:id', async (req,res)=>{
                 isOwnPost = false;
             }
         
+            // retrieves comments of the blogpost
             const commentData = await Comment.findAll({
                 include: [{model:User}],
                 where: {
                     post_id: postId
                 }
             });
-    
-    
         
             const comments = commentData.map((comment)=>
             comment.get({plain:true}));
     
+            // loops through comment to identify which comment belongs to the user
+            // addes a property to mark the comment as belonging to user
             for (comment of comments) {
                 if (comment.commenter_id === req.session.user_id) {
                     comment.isOwnComment = true;
@@ -71,6 +73,7 @@ router.get('/:id', async (req,res)=>{
                 };
             };
         
+            // passes all data to handlebars to render blogpost page
             req.session.save(async ()=>{
                 req.session.loggedIn = true;   
                 req.session.ownPost = isOwnPost;
@@ -83,12 +86,13 @@ router.get('/:id', async (req,res)=>{
         }
 
     } else {
-        res.status(200).render('login');
+        // if cookie timed out
+        res.status(408).render('login');
     }
 
 })
 
-// creates new blog posts
+// creates new blog posts using middleware to check user log-in status first
 router.post('/new', withAuth, async (req,res)=>{
 
     try{
@@ -111,9 +115,11 @@ router.post('/new', withAuth, async (req,res)=>{
 // updates a blog post
 router.put('/:id', async (req,res)=>{
 
+    // if user is logged in
     if (req.session.loggedIn) {
         try {
 
+            // sequelize updates blog post
             await BlogPost.update({blog_title: req.body.updatedTitle, blog_text: req.body.updatedText},{
                 where: { id: req.params.id }
             });
@@ -130,7 +136,8 @@ router.put('/:id', async (req,res)=>{
         }
 
     } else {
-        res.status(200).render('login');
+        // if cookie timed out
+        res.status(408).render('login');
     }
 
 })
@@ -138,6 +145,7 @@ router.put('/:id', async (req,res)=>{
 // deletes a blog post
 router.delete('/:id', async(req,res)=>{
 
+    // if user is logged in
     if (req.session.loggedIn) {
 
         try {
@@ -159,7 +167,8 @@ router.delete('/:id', async(req,res)=>{
         }
 
     } else {
-        res.status(200).render('login');
+        // if cookie timed out 
+        res.status(408).render('login');
     }
 
 });
@@ -167,6 +176,7 @@ router.delete('/:id', async(req,res)=>{
 // creates new blog comments
 router.post('/comment', async (req,res)=>{
     
+    // if user is logged in
     if (req.session.loggedIn) {
         try {
 
@@ -190,6 +200,7 @@ router.post('/comment', async (req,res)=>{
         }
 
     } else {
+        // if cookie timed out 
         res.status(408).render('login');
     }
 
@@ -198,6 +209,7 @@ router.post('/comment', async (req,res)=>{
 // updates comments
 router.put('/comment/:id', async (req,res)=>{
 
+    // if user is logged in
     if (req.session.loggedIn) {
         try {
 
@@ -223,6 +235,7 @@ router.put('/comment/:id', async (req,res)=>{
         }
 
     } else {
+        // if cookie timed out
         res.status(408).render('login');
     }
 
@@ -231,6 +244,7 @@ router.put('/comment/:id', async (req,res)=>{
 // deletes a comment
 router.delete('/comment/:id', async (req,res)=>{
 
+    // if user is logged in
     if (req.session.loggedIn) {
         try {
             await Comment.destroy({
@@ -249,12 +263,12 @@ router.delete('/comment/:id', async (req,res)=>{
         }
 
     } else {
+        // if cookie timed out 
         res.status(408).render('login');
     }
 
 });
 
 
-
-
+// exports router
 module.exports = router;
