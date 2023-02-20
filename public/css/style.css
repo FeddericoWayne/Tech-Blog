@@ -13,8 +13,6 @@
     --magenta: #E64398;
     --mustard: #F3D250;
     --eggtart: #ffefae;
-    
-
 }
 
 html {
@@ -34,6 +32,102 @@ header {
     padding-block: 35px;
     margin:5px auto 15px;
     border-radius: 35px;
+    
+}
+
+#login-hr, #blogpost-hr {
+    width: 50vw;
+    height: 5px;
+    background-color: var(--soot);
+    border-radius: 5px;
+}
+
+@keyframes wave { 
+    0% {
+        color: white;
+    }
+    10% {
+        color: black;
+    }
+    20% {
+        color:white;
+    }
+    100% {
+        color:white;
+    }
+}
+
+h1 span {
+    animation-name: wave;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+}
+
+h1 span:nth-child(1) {
+    animation-delay: 0s;
+}
+h1 span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+h1 span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+h1 span:nth-child(4) {
+    animation-delay: 0.6s;
+}
+h1 span:nth-child(5) {
+    animation-delay: 0.8s;
+}
+h1 span:nth-child(6) {
+    animation-delay: 1s;
+}
+h1 span:nth-child(7) {
+    animation-delay: 1.2s;
+}
+h1 span:nth-child(8) {
+    animation-delay: 1.4s;
+}
+h1 span:nth-child(9) {
+    animation-delay: 1.6s;
+}
+h1 span:nth-child(10) {
+    animation-delay: 1.8s;
+}
+h1 span:nth-child(11) {
+    animation-delay: 2s;
+}
+h1 span:nth-child(12) {
+    animation-delay: 2.2s;
+}
+h1 span:nth-child(13) {
+    animation-delay: 2.4s;
+}
+h1 span:nth-child(14) {
+    animation-delay: 2.6s;
+}
+h1 span:nth-child(15) {
+    animation-delay: 2.8s;
+}
+h1 span:nth-child(16) {
+    animation-delay: 3s;
+}
+
+
+#top {
+    font-family:'Press Start 2P', cursive;
+    text-decoration: none;
+    background-color: var(--babyblue);
+    padding: 5px;
+    border-radius: 5px;
+    color:white;
+    position:fixed;
+    left:5px;
+    bottom: 10px;
+    box-shadow: 5px 5px var(--soot);
+}
+
+#top:hover {
+    color:black;
 }
 
 nav {
@@ -69,8 +163,23 @@ nav {
     background-color: white;
 }
 
+#login-signup-container{
+    width: 70vw;
+    margin-inline: auto;
+    padding-top: 5px;
+    padding-bottom: 30px;
+    background-color: var(--eggtart);
+    border-radius: 25px;
+
+}
+
 .hint {
     margin-block: 0;
+}
+
+input {
+    height: 1.5rem;
+    margin-block: 0.5rem;
 }
 
 #new-post-container, #post-container {
@@ -126,6 +235,10 @@ nav {
     box-shadow: none;
 }
 
+#post-comment {
+    text-align: center;
+}
+
  #submit-comment {
     font-family: 'Press Start 2P', cursive;
     cursor: pointer;
@@ -174,7 +287,7 @@ nav {
 }
 
 #author-info {
-    margin-bottom: 30px
+    margin-bottom: 30px;
 }
 
 #content-lable {
@@ -189,6 +302,7 @@ nav {
 #post-content {
     width: 75vw;
     height: 45vh;
+    resize: none;
 }
 
 #title-box {
@@ -206,8 +320,8 @@ nav {
     resize: none;
 }
 
-#text-box {
-    font-size: 1.5rem;
+#text-box,#post-content {
+    font-size: 1.2rem;;
     font-family: 'Quantico', sans-serif;
     display: block;
     width: 80vw;
@@ -218,11 +332,6 @@ nav {
     margin-inline: auto;
     padding: 15px;
     resize: none;
-}
-
-#post-comment {
-    text-align: center;
-    margin-top: 35px;
 }
 
 #comment {
@@ -251,6 +360,7 @@ nav {
 
 .comment-box:hover {
     background-color: var(--eggtart);
+    box-shadow: 7px 7px var(--soot);
 }
 
 .commenter-info {
@@ -294,6 +404,7 @@ nav {
 
 .blog-post:hover {
     background-color: white;
+    box-shadow: 7px 7px var(--soot);
 }
 
 #user-post-header {

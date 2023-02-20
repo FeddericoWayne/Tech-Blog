@@ -12,7 +12,9 @@
 </head>
 <body>
     <header>
-        <h1 id="title">FRED'S TECH BLOG</h1>
+        <h1 id="title">
+            <span>F</span><span>R</span><span>E</span><span>D</span><span>'</span><span>S</span><span> </span><span>T</span><span>E</span><span>C</span><span>H</span><span> </span><span>B</span><span>L</span><span>O</span><span>G</span>
+        </h1>
     </header>
     <nav>
         {{#if loggedIn}}
@@ -29,6 +31,7 @@
         <div>
             {{{ body }}}
         </div>
+        <a id="top" href="#title">^<br>T<br>O<br>P</a>
     </main>
     {{#if loggedIn}}
     <script src="/js/logout.js"></script>
