@@ -2,7 +2,7 @@
 
   ## <a id="Description">Description</a> 
 
-  This is a technology blog site built with node.js, in the Controller-Model-View structure, with the help of express, sequelized, mysql2, bcrypt, and dotenv packages. 
+  This is a technology blog site built with node.js, in the Controller-Model-View structure, with the help of express, sequelized, mysql2, bcrypt, and dotenv packages, and handlebars for page rendering.
 
   Upon arriving on the homepage. The user is presented with the Home button, the Dashboard button, and the Login button, followed by the listing of currently existing blog posts, their titles, authors, and date and time the posts were created. If the user clicks on any other buttons than the Home button, the user is brought to the login/sign-up page, where the user can either log in or sign up with their username and password.
 
