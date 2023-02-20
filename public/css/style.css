@@ -23,7 +23,11 @@ html {
     background-color: var(--grey);
 }
 
-header {
+body {
+    margin: 0px;
+}
+
+header, footer {
     font-family: 'Press Start 2P', cursive;
     color: white;
     text-align: center;
@@ -34,7 +38,16 @@ header {
     padding-block: 35px;
     margin:5px auto 15px;
     border-radius: 35px;
-    
+}
+
+footer {
+    padding-block: 10px;
+    line-height: 1.5rem;
+}
+
+.email {
+    text-decoration: none;
+    color: black;
 }
 
 #login-hr, #blogpost-hr {
@@ -262,6 +275,7 @@ input {
     margin-block: 15px;
     border-radius: 35px;
     width: 75vw;
+    padding-inline: 25px;
     transition-property: all;
     transition-duration: 0.5s;
 }
@@ -279,6 +293,7 @@ input {
     font-family: 'Press Start 2P', cursive;
     background-color: var(--magenta);
     color:white;
+    line-height: 1.7rem;
     padding-block: 15px;
     padding-inline: 35px;
     border-radius: 10px;
@@ -370,6 +385,8 @@ input {
     border:none;
     margin-inline: auto;
     resize: none;
+    line-height: 2.7rem;
+    margin-bottom: 15px;
 }
 
 #text-box,#post-content {
@@ -438,7 +455,51 @@ input {
 }
 
 /* media query for small viewports */
+@media screen and (max-width: 640px) {
 
+    header, footer {
+        font-size: 0.5rem;
+        line-height: 1rem;
+    }
+
+    .navlink {
+        font-size: 0.5rem;
+        margin-inline: 0px;
+    }
+
+    .blog-title {
+        font-size: 0.7rem;
+    }
+
+    .author {
+        font-size: 0.6rem;
+    }
+
+    #author-info {
+        font-size: 0.7rem;
+    }
+
+    .read-more {
+        font-size: 0.5rem;
+    }
+
+    #title-box {
+        font-size: 0.8rem;
+        line-height: 1.2rem;
+    }
+
+    .edit-comment, .delete-comment {
+        font-size: 0.3rem;
+    }
+
+    .comment-text {
+        font-size: 0.7rem;
+    }
+
+    #top {
+        font-size: 0.7rem;
+    }
+}
 
 
 

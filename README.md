@@ -12,6 +12,8 @@
 
   The Logout button will sign the currently user out and take him back to the homepage. If at any point the user is idle on the site for too long and the cookies has timed out, the user can still finish reading blog posts or comments, but if he clicks on any buttons to edit/delete a post/comment, he will be brought to the login page to re-login before he can perform those tasks. 
 
+  This site is made for both wide and narrow viewports.
+
 
   The URL of the Github repo is: https://github.com/FeddericoWayne/Tech-Blog
 
