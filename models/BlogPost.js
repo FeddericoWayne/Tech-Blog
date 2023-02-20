@@ -18,7 +18,7 @@ BlogPost.init({
         allowNull: false,
     },
     blog_text: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
     },
     author_id: {

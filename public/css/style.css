@@ -1,3 +1,4 @@
+/* variables */
 :root {
     --fire: #E85A4F;
     --salmon: #E98074;
@@ -14,6 +15,7 @@
     --mustard: #F3D250;
     --eggtart: #ffefae;
 }
+
 
 html {
     font-family: 'Quantico', sans-serif;
@@ -40,7 +42,9 @@ header {
     height: 5px;
     background-color: var(--soot);
     border-radius: 5px;
+    margin-block: 30px;
 }
+
 
 @keyframes wave { 
     0% {
@@ -112,7 +116,7 @@ h1 span:nth-child(16) {
     animation-delay: 3s;
 }
 
-
+/* back to top button styling */
 #top {
     font-family:'Press Start 2P', cursive;
     text-decoration: none;
@@ -130,6 +134,7 @@ h1 span:nth-child(16) {
     color:black;
 }
 
+/* nav styling */
 nav {
     font-family: 'Press Start 2P', cursive;
     text-align: center;
@@ -163,6 +168,7 @@ nav {
     background-color: white;
 }
 
+/* login page styling */
 #login-signup-container{
     width: 70vw;
     margin-inline: auto;
@@ -170,7 +176,6 @@ nav {
     padding-bottom: 30px;
     background-color: var(--eggtart);
     border-radius: 25px;
-
 }
 
 .hint {
@@ -182,6 +187,15 @@ input {
     margin-block: 0.5rem;
 }
 
+.login-container {
+    margin-top: 35px;
+}
+
+#login-signup-container {
+    text-align: center;
+}
+
+/* new blog post styling */
 #new-post-container, #post-container {
     text-align: center;
     margin-inline: auto;
@@ -213,7 +227,7 @@ input {
     color: var(--soot);
 }    
 
-
+/* view blog post styling */
 .read-more {
     color: var(--blue);
     background-color: var(--grey);
@@ -221,6 +235,9 @@ input {
     padding: 10px 15px;
     transition-property: all;
     transition-duration: 0.3s;
+    font-family: 'Press Start 2P', cursive;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .read-more:hover {
@@ -235,11 +252,46 @@ input {
     box-shadow: none;
 }
 
+/* blog listing styling */
+.blog-post {
+    text-align: center;
+    background-color: var(--mustard);
+    border: 10px solid var(--eggtart);
+    padding-block: 25px;
+    margin-inline:auto;
+    margin-block: 15px;
+    border-radius: 35px;
+    width: 75vw;
+    transition-property: all;
+    transition-duration: 0.5s;
+}
+
+.blog-post:hover {
+    background-color: white;
+    box-shadow: 7px 7px var(--soot);
+}
+
+#user-post-header {
+    text-align: center;
+}
+
+.blog-title {
+    font-family: 'Press Start 2P', cursive;
+    background-color: var(--magenta);
+    color:white;
+    padding-block: 15px;
+    padding-inline: 35px;
+    border-radius: 10px;
+    margin-inline: auto;
+    width: fit-content;
+}
+
+/* comment section styling */
 #post-comment {
     text-align: center;
 }
 
- #submit-comment {
+#submit-comment {
     font-family: 'Press Start 2P', cursive;
     cursor: pointer;
     text-decoration: none;
@@ -331,11 +383,16 @@ input {
     border:none;
     margin-inline: auto;
     padding: 15px;
-    resize: none;
+    resize: vertical;
 }
 
 #comment {
     width: 80vw;
+    height: 20vh;
+    border-radius: 15px;
+    padding: 15px;
+    border:none;
+    resize: none;
     display: block;
     margin-bottom: 35px;
     margin-inline: auto;
@@ -368,7 +425,7 @@ input {
 }
 
 .comment-text {
-    text-align: center;
+    padding: 10px;
     font-size: 1.2rem;
     width: 60vw;
     background: white;
@@ -377,57 +434,11 @@ input {
     margin-inline: auto;
     margin-top: 0;
     margin-bottom: 15px;
-    resize: none;
+    resize:vertical;
 }
 
 
 
-.read-more {
-    font-family: 'Press Start 2P', cursive;
-    text-decoration: none;
-    cursor: pointer;
 
-}
-
-.blog-post {
-    text-align: center;
-    background-color: var(--mustard);
-    border: 10px solid var(--eggtart);
-    padding-block: 25px;
-    margin-inline:auto;
-    margin-block: 15px;
-    border-radius: 35px;
-    width: 75vw;
-    transition-property: all;
-    transition-duration: 0.5s;
-}
-
-.blog-post:hover {
-    background-color: white;
-    box-shadow: 7px 7px var(--soot);
-}
-
-#user-post-header {
-    text-align: center;
-}
-
-.blog-title {
-    font-family: 'Press Start 2P', cursive;
-    background-color: var(--magenta);
-    color:white;
-    padding-block: 15px;
-    padding-inline: 35px;
-    border-radius: 10px;
-    margin-inline: auto;
-    width: fit-content;
-}
-
-.login-container {
-    margin-top: 35px;
-}
-
-#login-signup-container {
-    text-align: center;
-}
 
 

@@ -4,15 +4,13 @@ const { User } = require('../models');
 // seed data
 const user = [
     {
-        username: "Fred Wang",
-        email: "jackiew1120@hotmail.com",
-        password: "123456"
+        username: "trixiemattel",
+        password: "1234567"
 
     },
     {
-        username: "lulu",
-        email: "jackiew1120@gmail.com",
-        password: "76565433"
+        username: "katya",
+        password: "7654321"
     }
 ];
 
