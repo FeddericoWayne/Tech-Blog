@@ -14,8 +14,24 @@
     --magenta: #E64398;
     --mustard: #F3D250;
     --eggtart: #ffefae;
+    --ultraviolet: #9d3bff;
 }
 
+/* header text animation */
+@keyframes wave { 
+    0% {
+        color: white;
+    }
+    10% {
+        color: black;
+    }
+    20% {
+        color:white;
+    }
+    100% {
+        color:white;
+    } 
+}
 
 html {
     font-family: 'Quantico', sans-serif;
@@ -58,6 +74,56 @@ header, footer {
         0 -4.5rem 0 -3rem var(--babyblue),
         0 4.5rem 0 -3rem var(--babyblue);
 }
+/* nav styling */
+nav {
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    
+}
+
+#home, #dashboard, #login, #logout {
+    font-family: 'Press Start 2P', cursive;
+    cursor: pointer;
+    text-decoration: none;
+    color:white;
+    padding-inline: 3px;
+    margin-top: 25px;
+    margin-inline: 25px;
+    transition-property: all;
+    background-color: var(--fire);
+    padding-inline:7px;
+    box-shadow:
+    0 -7.5px 0 -2.5px var(--fire),
+    0 7.5px 0 -2.5px var(--fire),
+    0 -15px 0 -5px var(--fire),
+    0 15px 0 -5px var(--fire),
+    0 -22.5px 0 -10px var(--fire),
+    0 22.5px 0 -10px var(--fire),
+    0 -30px 0 -15px var(--fire),
+    0 30px 0 -15px var(--fire),
+
+    -7.5px 0 0 0 var(--salmon),
+    7.5px 0 0 0 var(--salmon),
+    0 0 0 5px var(--salmon),
+    0 -7.5px 0 2.5px var(--salmon),
+    0 7.5px 0 2.5px var(--salmon),
+    0 -12.5px 0 0 var(--salmon),
+    0 12.5px 0 0 var(--salmon),
+    0 -17.5px 0 -2.5px var(--salmon),
+    0 17.5px 0 -2.5px var(--salmon),
+    0 -22.5px 0 -15px var(--salmon),
+    0 22.5px 0 -15px var(--salmon);
+}
+
+#home:hover, #dashboard:hover, #login:hover, #logout:hover {
+    color:black;
+}
+
+#home:active, #dashboard:active, #login:active, #logout:active {
+    color:var(--soot);
+}
 
 footer {
     margin-top: 70px;
@@ -70,22 +136,6 @@ footer {
     background-color: var(--soot);
     border-radius: 5px;
     margin-block: 30px;
-}
-
-
-@keyframes wave { 
-    0% {
-        color: white;
-    }
-    10% {
-        color: black;
-    }
-    20% {
-        color:white;
-    }
-    100% {
-        color:white;
-    } 
 }
 
 h1 span {
@@ -170,41 +220,30 @@ h1 span:nth-child(16) {
     color:black;
 }
 
-/* nav styling */
-nav {
-    font-family: 'Press Start 2P', cursive;
-    text-align: center;
-    margin-top: 35px;
-    margin-bottom: 35px;
-    
-}
-
-.navlink {
+/* login page styling */
+#login-button, #signup-button {
     font-family: 'Press Start 2P', cursive;
     cursor: pointer;
     text-decoration: none;
     color:white;
     background-color: var(--fire);
     border: 5px solid var(--salmon);
-    padding: 10px;
+    padding: 7px;
     border-radius: 15px;
-    margin-inline: 20px;
     margin-top: 25px;
+    margin-inline: 25px;
     transition-property: all;
 }
 
-.navlink:hover {
+#login-button:hover, #signup-button:hover {
     color:black;
-    background-color: var(--grey);
-    border: 5px solid var(--salmon);
-}
-
-.navlink:active {
-    color:var(--soot);
     background-color: white;
 }
 
-/* login page styling */
+#login-button:active, #signup-button:active {
+    color:var(--soot);
+}
+
 #login-signup-container{
     width: 70vw;
     margin-inline: auto;
@@ -334,6 +373,13 @@ input {
     border-radius: 10px;
     margin-inline: auto;
     width: fit-content;
+    transition-property: all;
+    transition-duration: 0.5s;
+}
+
+.blog-post:hover .blog-title {
+    color: var(--ultraviolet);
+    background-color: var(--eggtart);
 }
 
 /* comment section styling */
@@ -503,11 +549,34 @@ input {
         width: 90vw;
         margin-left: 0;
         padding-block: 35px;
-        margin:5px auto 10px;
+        margin:5px auto 5px;
         border-radius: 35px;
         padding-block: 10px;
         line-height: 1.5rem;
         box-shadow: none;
+    }
+
+    #home, #dashboard, #login, #logout {
+        font-family: 'Press Start 2P', cursive;
+        cursor: pointer;
+        text-decoration: none;
+        color:white;
+        background-color: var(--fire);
+        border: 5px solid var(--salmon);
+        padding: 7px;
+        border-radius: 15px;
+        margin-inline: 15px;
+        box-shadow: none;
+        transition-property: all;
+    }
+
+    #home:hover, #dashboard:hover, #login:hover, #logout:hover {
+        color: black;
+        background-color: white;
+    }
+
+    #home:active, #dashboard:active, #login:active, #logout:active {
+        color: var(--soot);
     }
 
     .navlink {
