@@ -74,69 +74,6 @@ header, footer {
         0 -4.5rem 0 -3rem var(--babyblue),
         0 4.5rem 0 -3rem var(--babyblue);
 }
-/* nav styling */
-nav {
-    font-family: 'Press Start 2P', cursive;
-    text-align: center;
-    margin-top: 35px;
-    margin-bottom: 35px;
-    
-}
-
-#home, #dashboard, #login, #logout {
-    font-family: 'Press Start 2P', cursive;
-    cursor: pointer;
-    text-decoration: none;
-    color:white;
-    padding-inline: 3px;
-    margin-top: 25px;
-    margin-inline: 25px;
-    transition-property: all;
-    background-color: var(--fire);
-    padding-inline:7px;
-    box-shadow:
-    0 -7.5px 0 -2.5px var(--fire),
-    0 7.5px 0 -2.5px var(--fire),
-    0 -15px 0 -5px var(--fire),
-    0 15px 0 -5px var(--fire),
-    0 -22.5px 0 -10px var(--fire),
-    0 22.5px 0 -10px var(--fire),
-    0 -30px 0 -15px var(--fire),
-    0 30px 0 -15px var(--fire),
-
-    -7.5px 0 0 0 var(--salmon),
-    7.5px 0 0 0 var(--salmon),
-    0 0 0 5px var(--salmon),
-    0 -7.5px 0 2.5px var(--salmon),
-    0 7.5px 0 2.5px var(--salmon),
-    0 -12.5px 0 0 var(--salmon),
-    0 12.5px 0 0 var(--salmon),
-    0 -17.5px 0 -2.5px var(--salmon),
-    0 17.5px 0 -2.5px var(--salmon),
-    0 -22.5px 0 -15px var(--salmon),
-    0 22.5px 0 -15px var(--salmon);
-}
-
-#home:hover, #dashboard:hover, #login:hover, #logout:hover {
-    color:black;
-}
-
-#home:active, #dashboard:active, #login:active, #logout:active {
-    color:var(--soot);
-}
-
-footer {
-    margin-top: 70px;
-    padding-block: 5px;
-}
-
-#login-hr, #blogpost-hr {
-    width: 50vw;
-    height: 5px;
-    background-color: var(--soot);
-    border-radius: 5px;
-    margin-block: 30px;
-}
 
 h1 span {
     animation-name: wave;
@@ -191,6 +128,70 @@ h1 span:nth-child(15) {
 }
 h1 span:nth-child(16) {
     animation-delay: 3s;
+}
+
+/* nav styling */
+nav {
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    
+}
+
+#home, #dashboard, #login, #logout {
+    font-family: 'Press Start 2P', cursive;
+    cursor: pointer;
+    text-decoration: none;
+    color:white;
+    padding-inline: 3px;
+    margin-top: 25px;
+    margin-inline: 15px;
+    transition-property: all;
+    background-color: var(--fire);
+    padding-inline:7px;
+    box-shadow:
+    0 -7.5px 0 -2.5px var(--fire),
+    0 7.5px 0 -2.5px var(--fire),
+    0 -15px 0 -5px var(--fire),
+    0 15px 0 -5px var(--fire),
+    0 -22.5px 0 -10px var(--fire),
+    0 22.5px 0 -10px var(--fire),
+    0 -30px 0 -15px var(--fire),
+    0 30px 0 -15px var(--fire),
+
+    -7.5px 0 0 0 var(--salmon),
+    7.5px 0 0 0 var(--salmon),
+    0 0 0 5px var(--salmon),
+    0 -7.5px 0 2.5px var(--salmon),
+    0 7.5px 0 2.5px var(--salmon),
+    0 -12.5px 0 0 var(--salmon),
+    0 12.5px 0 0 var(--salmon),
+    0 -17.5px 0 -2.5px var(--salmon),
+    0 17.5px 0 -2.5px var(--salmon),
+    0 -22.5px 0 -15px var(--salmon),
+    0 22.5px 0 -15px var(--salmon);
+}
+
+#home:hover, #dashboard:hover, #login:hover, #logout:hover {
+    color:black;
+}
+
+#home:active, #dashboard:active, #login:active, #logout:active {
+    color:var(--soot);
+}
+
+footer {
+    margin-top: 70px;
+    padding-block: 5px;
+}
+
+#login-hr, #blogpost-hr {
+    width: 50vw;
+    height: 5px;
+    background-color: var(--soot);
+    border-radius: 5px;
+    margin-block: 30px;
 }
 
 #email {
@@ -565,7 +566,7 @@ input {
         border: 5px solid var(--salmon);
         padding: 7px;
         border-radius: 15px;
-        margin-inline: 15px;
+        margin-inline: 0px;
         box-shadow: none;
         transition-property: all;
     }
