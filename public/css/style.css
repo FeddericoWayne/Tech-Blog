@@ -31,23 +31,37 @@ header, footer {
     font-family: 'Press Start 2P', cursive;
     color: white;
     text-align: center;
-    background-color: var(--blue);
-    border: 15px solid var(--babyblue);
     width: 90vw;
-    margin-left: 0;
-    padding-block: 35px;
-    margin:5px auto 15px;
-    border-radius: 35px;
+    padding-block: 5px;
+    margin:60px auto 80px;
+    background-color: var(--blue);
+    /* pixelated border styling */
+    box-shadow:
+        0 -1.5rem 0 -0.5rem var(--blue),
+        0 1.5rem 0 -0.5rem var(--blue),
+        0 -3rem 0 -1rem var(--blue),
+        0 3rem 0 -1rem var(--blue),
+        0 -4.5rem 0 -2rem var(--blue),
+        0 4.5rem 0 -2rem var(--blue),
+        0 -6rem 0 -3rem var(--blue),
+        0 6rem 0 -3rem var(--blue),
+
+        -1.5rem 0 0 0 var(--babyblue),
+        1.5rem 0 0 0 var(--babyblue),
+        0 0 0 1rem var(--babyblue),
+        0 -1.5rem 0 0.5rem var(--babyblue),
+        0 1.5rem 0 0.5rem var(--babyblue),
+        0 -2.5rem 0 0 var(--babyblue),
+        0 2.5rem 0 0 var(--babyblue),
+        0 -3.5rem 0 -0.5rem var(--babyblue),
+        0 3.5rem 0 -0.5rem var(--babyblue),
+        0 -4.5rem 0 -3rem var(--babyblue),
+        0 4.5rem 0 -3rem var(--babyblue);
 }
 
 footer {
-    padding-block: 10px;
-    line-height: 1.5rem;
-}
-
-.email {
-    text-decoration: none;
-    color: black;
+    margin-top: 70px;
+    padding-block: 5px;
 }
 
 #login-hr, #blogpost-hr {
@@ -127,6 +141,15 @@ h1 span:nth-child(15) {
 }
 h1 span:nth-child(16) {
     animation-delay: 3s;
+}
+
+#email {
+    text-decoration: none;
+    color: black;
+    animation-name: wave;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
 }
 
 /* back to top button styling */
@@ -461,6 +484,19 @@ input {
     header, footer {
         font-size: 0.5rem;
         line-height: 1rem;
+        font-family: 'Press Start 2P', cursive;
+        color: white;
+        text-align: center;
+        background-color: var(--blue);
+        border: 15px solid var(--babyblue);
+        width: 90vw;
+        margin-left: 0;
+        padding-block: 35px;
+        margin:5px auto 10px;
+        border-radius: 35px;
+        padding-block: 10px;
+        line-height: 1.5rem;
+        box-shadow: none;
     }
 
     .navlink {
