@@ -14,7 +14,8 @@
 
   This site is made for both wide and narrow viewports.
 
-
+  The URL of the deployed app on Heroku: https://freds-tech-blog.herokuapp.com/
+  
   The URL of the Github repo is: https://github.com/FeddericoWayne/Tech-Blog
 
   
