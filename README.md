@@ -20,19 +20,22 @@
 
   
   Homepage screenshot:
-  <img src="./assets/images/Homepage-screenshot.png">
+  <img src="./assets/images/homepage-screenshot.png">
 
-  Login Page screenshot:
-  <img src="./assets/images/Login screenshot.png">
+  Login/ Sign Up Page screenshot:
+  <img src="./assets/images/login-screenshot.png">
 
   Dashboard screenshot:
-  <img src="./assets/images/Dashboard-screenshot.png">
+  <img src="./assets/images/dashboard-screenshot.png">
 
   New Post Page screenshot:
-  <img src="./assets/images/New-post-screenshot.png">
+  <img src="./assets/images/newpost-screenshot.png">
 
-  Comment Section screenshot:
-  <img src="./assets/images/Comment-screenshot.png">
+  Edit Post/ Delete Post/ Comment Section screenshot:
+  <img src="./assets/images/comment-screenshot.png">
+
+  Edit/ Delete Comment screenshot:
+  <img src="./assets/images/edit-comment-screenshot.png">
 
 ***
 
