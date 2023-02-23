@@ -207,7 +207,7 @@ footer {
 #top {
     font-family:'Press Start 2P', cursive;
     text-decoration: none;
-    background-color: var(--babyblue);
+    background-color: var(--teal);
     padding: 5px;
     border-radius: 5px;
     color:white;
@@ -219,6 +219,10 @@ footer {
 
 #top:hover {
     color:black;
+}
+
+#top:active {
+    color: var(--soot);
 }
 
 /* login page styling */
