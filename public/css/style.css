@@ -214,7 +214,7 @@ footer {
     position:fixed;
     left:5px;
     bottom: 10px;
-    box-shadow: 5px 5px var(--soot);
+    box-shadow: 5px 5px rgba(143, 141, 138,0.7);
 }
 
 #top:hover {
@@ -223,6 +223,8 @@ footer {
 
 #top:active {
     color: var(--soot);
+    box-shadow: none;
+    transform:translateY(5px);
 }
 
 /* login page styling */
